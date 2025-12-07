@@ -53,7 +53,7 @@ TOP_K_PER_SEED = 50
 SIM_THRESHOLD = 0.6
 
 
-# ========== 手工种子词 (可根据需要继续扩充 / 调整) ==========
+# ========== 人工种子词 ==========
 
 SEED_TERMS_BY_CATEGORY = {
     "A": [
@@ -316,14 +316,12 @@ def main():
             }
             f_out.write(json.dumps(record, ensure_ascii=False) + "\n")
 
-        # 可选: 如希望把“仅通过 embedding 扩展出来、统计表中没有的词”也加入，
-        # 可以在此处补充逻辑（例如 term_vecs 中存在但 stats 中不存在的项）。
-
     print(f"[INFO] 已输出合并候选烟雾词表到: {output_path}")
     print(f"[INFO] 其中: source='both'  {num_both} 条, source='stat' {num_stat_only} 条, embed-only {num_embed_only} 条。")
 
 
 if __name__ == "__main__":
     main()
+
 
 
