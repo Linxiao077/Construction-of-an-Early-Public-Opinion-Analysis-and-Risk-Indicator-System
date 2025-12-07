@@ -499,7 +499,7 @@ class AdvancedNewsDeduplicator:
         print("=" * 60)
 
         # 基础统计
-        print(f"\n📊 基础统计:")
+        print(f"\n 基础统计:")
         print(f"  原始数据量: {len(original_df):,} 条")
         print(f"  去重后数据量: {len(deduplicated_df):,} 条")
         print(f"  删除重复新闻: {stats['removed_count']:,} 条")
@@ -507,7 +507,7 @@ class AdvancedNewsDeduplicator:
         print(f"  去重率: {stats['removed_count'] / len(original_df) * 100:.2f}%")
 
         # 权威度分布
-        print(f"\n🏅 权威度分布 (被保留的新闻组):")
+        print(f"\n 权威度分布 (被保留的新闻组):")
         authority_names = {
             1: "最高权威", 2: "高权威", 3: "中等权威",
             4: "基础权威", 5: "一般权威", 6: "较低权威", 7: "最低权威"
@@ -519,7 +519,7 @@ class AdvancedNewsDeduplicator:
             print(f"  {authority_names[auth_level]}({auth_level}): {count} 组 ({percentage:.1f}%)")
 
         # 选择原因统计
-        print(f"\n🎯 选择原因统计:")
+        print(f"\n 选择原因统计:")
         reason_stats = defaultdict(int)
         for log in selection_log:
             reason_stats[log['selection_reason']] += 1
@@ -530,7 +530,7 @@ class AdvancedNewsDeduplicator:
 
         # 显示前几个处理示例
         if selection_log:
-            print(f"\n📋 前10组处理示例:")
+            print(f"\n 前10组处理示例:")
             for i, log in enumerate(selection_log[:10]):
                 print(f"  组{log['group_id'] + 1}: 保留 '{log['best_media']}' "
                       f"(权威度{log['authority_level']}), 原因: {log['selection_reason']}, "
@@ -606,3 +606,4 @@ result_df, selection_logs = deduplicator.deduplicate_news(df)
 
 result_df.to_excel("deduplicated_news_full.xlsx", index=False)
 print("已成功保存为 deduplicated_news_full.xlsx")
+
